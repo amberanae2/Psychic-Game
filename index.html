@@ -1,24 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Psychic Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-
 <body>
+    <div id ="game">
     <h1>Psychic Game</h1>
-    <div id ="Guessinggame">
-    <p>Guess what letter I'm thinking of</p>    
-    <p>Wins</p>
-    <p>losses</p>
-    <p>Guesses left</p>
-    <p>Your guesses so far</p>  
-    </div>
-
-    
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+    <p>Guess what letter I'm thinking of?</p>    
+    <p>Wins:</p>
+    <p>Losses:</p>
+    <p>Guesses Left:</p>
+    <p>Your Guesses so Far:</p>  
+ </div>
+    <script type = "text/javascript">
+             
+    //// Put variables here:       
+    var wins= 0;
+    var losses = 0;
+    var guessesLeft = 8;
+    var guessesFar = [];
+    var computerChoices = ['a', 'b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+            
+    //// I need to add a button to start the game:
+    document.onkeyup = function(event) {
+                
+    //// add a key for user to use and computer
+    var userGuess = String.fromCharCode(event.keyCode);
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    guessesFar.push(userGuess);
+            /// if statements need to be added:
+    if (userGuess == computerGuess) {
+    wins++;
+    alert("That\'s Correct \!");
+    guessesLeft = 8;
+    guessesFar.length = 0;
+    }
+    else if (guessesLeft == 0){ 
+    losses++;
+    alert("Sorry, Try Again");
+    guessesLeft=8;
+    guessesFar.length = 0;
+    }
+    else if (userGuess !== computerGuess){
+                guessesLeft--;
+    }
+            
+            
+    var html =
+     "<p>You chose: " + userGuess + "</p>" +
+     "<p>The computer chose: " + computerGuess + "</p>" +
+     "<p>Wins: " + wins + "</p>" +
+     "<p>Losses: " + losses + "</p>" +
+     "<p>GuessesLeft: " + guessesLeft + "</p>" +
+     "<p>GuessesFar: " + guessesFar  + "</p>";
+            
+    document.querySelector('#game').innerHTML = html;
+    }
+</script>
 </body>
-
+            
 </html>
