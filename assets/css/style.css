@@ -1,14 +1,19 @@
 body{
-    background: lavender;
-    color: black;
+    background-image: url("../images/psychic-72085_1280.jpg");
+   
+
 
 }
 
 h1{
     font-size: 40px;
     margin-bottom: 18px;
+    text-align: center;
+    color: white;
 }
 
 p {
     font-size: 25px;
+    text-align: center;
+    color: white;
 }
